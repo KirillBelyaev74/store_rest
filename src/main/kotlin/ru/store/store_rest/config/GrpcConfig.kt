@@ -1,7 +1,7 @@
 package ru.store.store_rest.config
 
 import io.grpc.ManagedChannelBuilder
-import ru.store.store_rest.ThingServiseGrpc
+import ru.store.store_thing.ThingServiseGrpc
 
 object GrpcConfig {
 

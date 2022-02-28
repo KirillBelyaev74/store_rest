@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package ru.store.store_rest;
+import "google/protobuf/wrappers.proto";
+
+package ru.store.store_thing;
 
 // OBJECTS
 
@@ -16,24 +18,24 @@ message Error {
 }
 
 message Thing {
-  int64 id = 1;
-  string brand = 2;
-  string category = 3;
-  string size = 4;
-  int64 price = 5;
-  string description = 6;
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue brand = 2;
+  google.protobuf.StringValue category = 3;
+  google.protobuf.StringValue size = 4;
+  google.protobuf.Int64Value price = 5;
+  google.protobuf.StringValue description = 6;
 }
 
 message BrandCategorySize {
-  int64 id = 1;
-  string brandCategorySize = 2;
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue brandCategorySize = 2;
 }
 
 // REQUEST
 
 message Request {
-  string name = 1;
-  string value = 2;
+  google.protobuf.StringValue name = 1;
+  google.protobuf.StringValue value = 2;
 }
 
 message RequestByMiddlePrice {

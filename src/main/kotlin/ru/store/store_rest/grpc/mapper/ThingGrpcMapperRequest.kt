@@ -1,26 +1,27 @@
 package ru.store.store_rest.grpc.mapper
 
-import ru.store.store_rest.ThingOuterClass.*
-import ru.store.store_rest.model.RequestGrpcDto
+import com.google.protobuf.Int64Value
+import com.google.protobuf.StringValue
+import ru.store.store_thing.ThingOuterClass.*
 import ru.store.store_rest.model.ThingDto
 
 object ThingGrpcMapperRequest {
 
     fun thingMapper(thing: ThingDto): Thing {
-        return Thing.newBuilder()
-            .setId(thing.id)
-            .setBrand(thing.brand ?: "")
-            .setCategory(thing.category ?: "")
-            .setSize(thing.size ?: "")
-            .setPrice(thing.price ?: 0)
-            .setDescription(thing.description ?: "")
-            .build()
+        return Thing.newBuilder().apply {
+            id = thing.id?.let { Int64Value.of(it) }
+            brand = thing.brand?.let { StringValue.of(it) }
+            category = thing.category?.let { StringValue.of(it) }
+            size = thing.size?.let { StringValue.of(it) }
+            price = thing.price?.let { Int64Value.of(it) }
+            description = thing.description?.let { StringValue.of(it) }
+        }.build()
     }
 
-    fun requestMapper(request: RequestGrpcDto?): Request {
+    fun requestMapper(name: String?, value: String?): Request {
         return Request.newBuilder()
-            .setName(request?.name ?: "")
-            .setValue(request?.value ?: "")
+            .setName(StringValue.of(name))
+            .setValue(StringValue.of(value))
             .build()
     }
 
