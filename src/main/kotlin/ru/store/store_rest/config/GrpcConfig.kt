@@ -7,7 +7,7 @@ object GrpcConfig {
 
     fun getStub(): ThingServiseGrpc.ThingServiseFutureStub {
         val channel = ManagedChannelBuilder
-            .forAddress("localhost", 9090)
+            .forAddress("localhost", 9091)
             .usePlaintext()
             .build()
         return ThingServiseGrpc.newFutureStub(channel)

@@ -1,7 +1,6 @@
 package ru.store.store_rest.grpc.mapper
 
 import ru.store.store_rest.ThingOuterClass.*
-import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.RequestGrpcDto
 import ru.store.store_rest.model.ThingDto
 
