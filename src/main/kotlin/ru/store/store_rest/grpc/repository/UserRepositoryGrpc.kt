@@ -1,4 +1,4 @@
-package ru.store.store_rest.grpc
+package ru.store.store_rest.grpc.repository
 
 import org.springframework.stereotype.Repository
 import ru.store.store_rest.config.UserConfig
