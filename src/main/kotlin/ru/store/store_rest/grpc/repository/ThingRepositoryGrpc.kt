@@ -1,12 +1,12 @@
 package ru.store.store_rest.grpc.repository
 
 import org.springframework.stereotype.Repository
-import ru.store.store_thing.ThingOuterClass.Status
 import ru.store.store_rest.config.GrpcConfig
 import ru.store.store_rest.grpc.mapper.ThingGrpcMapperRequest
 import ru.store.store_rest.grpc.mapper.ThingGrpcMapperResponse
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
+import ru.store.store_thing.ThingOuterClass.Status
 
 @Repository
 open class ThingRepositoryGrpc {
@@ -33,7 +33,7 @@ open class ThingRepositoryGrpc {
     }
 
     fun getAllBrandCategorySize(name: String): List<BrandCategorySizeDto> {
-        val request = ThingGrpcMapperRequest.requestMapper(name, null)
+        val request = ThingGrpcMapperRequest.requestMapper(name, "")
         val response = GrpcConfig.getStub().getAllBrandCategorySizeResponse(request)
         val result = response.get()
         return when (result.status) {

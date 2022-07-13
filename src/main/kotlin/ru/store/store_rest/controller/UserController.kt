@@ -31,6 +31,10 @@ class UserController(private val service: IUserService): IUserController {
         return service.getUser(user)
     }
 
+    override fun getAllUsers(): List<UserDto> {
+        return service.getAllUsers()
+    }
+
     override fun delete(@PathVariable id: Long): Boolean {
         return service.delete(id)
     }

@@ -7,9 +7,9 @@ package ru.store.store_thing;
 // OBJECTS
 
 enum Status {
-    OK = 0;
-    BAD = 1;
-    ERROR = 2;
+  OK = 0;
+  BAD = 1;
+  ERROR = 2;
 }
 
 message Error {
@@ -39,8 +39,8 @@ message Request {
 }
 
 message RequestByMiddlePrice {
-    int64 low = 1;
-    int64 high = 2;
+  int64 low = 1;
+  int64 high = 2;
 }
 
 // RESPONCE
@@ -48,13 +48,13 @@ message RequestByMiddlePrice {
 message ThingResponse {
   Status status = 1;
   Error error = 2;
-  repeated Thing thing = 3; 
+  repeated Thing thing = 3;
 }
 
 message BrandCategorySizeResponse {
   Status status = 1;
   Error error = 2;
-  repeated BrandCategorySize brandCategorySize = 3; 
+  repeated BrandCategorySize brandCategorySize = 3;
 }
 
 // SERVISE

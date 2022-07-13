@@ -39,6 +39,10 @@ class UserService(private val repository: UserRepositoryGrpc): IUserService {
         return repository.getUser(user)
     }
 
+    override fun getAllUsers(): List<UserDto> {
+        TODO("Not yet implemented")
+    }
+
     override fun delete(id: Long): Boolean {
         if (id == null || id < 1) {
             throw IllegalArgumentException("Not correct parameters id: [$id]")

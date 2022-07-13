@@ -8,7 +8,7 @@ import ru.store.store_rest.model.UserDto
 import ru.store.store_user.UserOuterClass.Status
 
 @Repository
-class UserRepositoryGrpc {
+open class UserRepositoryGrpc {
 
     fun saveUser(user: UserDto): Boolean {
         val request = UserGrpcMapperRequest.userMapper(user)

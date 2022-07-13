@@ -2,27 +2,27 @@ package ru.store.store_rest.grpc.mapper
 
 import com.google.protobuf.Int64Value
 import com.google.protobuf.StringValue
-import ru.store.store_thing.ThingOuterClass.*
 import ru.store.store_rest.model.ThingDto
+import ru.store.store_thing.ThingOuterClass.*
 
 object ThingGrpcMapperRequest {
 
     fun thingMapper(thing: ThingDto): Thing {
         return Thing.newBuilder().apply {
-            id = thing.id?.let { Int64Value.of(it) }
-            brand = thing.brand?.let { StringValue.of(it) }
-            category = thing.category?.let { StringValue.of(it) }
-            size = thing.size?.let { StringValue.of(it) }
-            price = thing.price?.let { Int64Value.of(it) }
-            description = thing.description?.let { StringValue.of(it) }
+            thing.id?.let { id = Int64Value.of(it) }
+            thing.brand?.let { brand = StringValue.of(it) }
+            thing.category?.let { category = StringValue.of(it) }
+            thing.size?.let { size = StringValue.of(it) }
+            thing.price?.let { price = Int64Value.of(it) }
+            thing.description?.let { description = StringValue.of(it) }
         }.build()
     }
 
     fun requestMapper(name: String?, value: String?): Request {
-        return Request.newBuilder()
-            .setName(StringValue.of(name))
-            .setValue(StringValue.of(value))
-            .build()
+        return Request.newBuilder().apply {
+            name?.let { this.name = StringValue.of(it) }
+            value?.let { this.value = StringValue.of(it) }
+        }.build()
     }
 
     fun requestByMiddlePriceMapper(low: Long, high: Long): RequestByMiddlePrice {

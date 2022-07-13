@@ -12,5 +12,7 @@ interface IUserService {
 
     fun getUser(user: UserDto): UserDto
 
+    fun getAllUsers(): List<UserDto>
+
     fun delete(id: Long): Boolean
 }

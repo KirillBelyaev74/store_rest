@@ -16,8 +16,11 @@ interface IUserController {
     @GetMapping("/id/{id}")
     fun getUserById(@PathVariable id: Long): UserDto
 
-    @PostMapping("/")
+    @GetMapping("/")
     fun getUser(@RequestBody user: UserDto): UserDto
+
+    @GetMapping("/all")
+    fun getAllUsers(): List<UserDto>
 
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long): Boolean
