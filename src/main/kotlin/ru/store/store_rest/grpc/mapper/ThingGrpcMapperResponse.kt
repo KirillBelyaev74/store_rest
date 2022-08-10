@@ -1,8 +1,8 @@
 package ru.store.store_rest.grpc.mapper
 
-import ru.store.store_thing.ThingOuterClass
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
+import ru.store.store_thing.ThingOuterClass
 
 object ThingGrpcMapperResponse {
 
