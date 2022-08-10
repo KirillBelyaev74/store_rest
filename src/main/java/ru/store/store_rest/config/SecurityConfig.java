@@ -3,6 +3,7 @@ package ru.store.store_rest.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -46,25 +47,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe(withDefaults());
     }
 
-    @Bean
-    public UserDetailsManager users() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password("user")
-                .roles("USER")
-                .build();
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password("admin")
-                .roles("USER", "ADMIN")
-                .build();
-        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-        users.setCreateUserSql("insert into users (username, password, enabled) values (?,?,?) ON CONFLICT (username) DO NOTHING");
-        users.setCreateAuthoritySql("insert into authorities (username, authority) values (?,?) ON CONFLICT (username, authority) DO NOTHING");
-        users.createUser(user);
-        users.createUser(admin);
-        return users;
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, enabled "
+                        + "from users "
+                        + "where username = ?")
+                .authoritiesByUsernameQuery("select username, authority "
+                        + "from authorities "
+                        + "where username = ?");
     }
+
+//    @Bean
+//    public UserDetailsManager users() {
+//        UserDetails user = User.builder()
+//                .username("user")
+//                .password("user")
+//                .roles("USER")
+//                .build();
+//        UserDetails admin = User.builder()
+//                .username("admin")
+//                .password("admin")
+//                .roles("USER", "ADMIN")
+//                .build();
+//        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
+//        users.setCreateUserSql("insert into users (username, password, enabled) values (?,?,?) ON CONFLICT (username) DO NOTHING");
+//        users.setCreateAuthoritySql("insert into authorities (username, authority) values (?,?) ON CONFLICT (username, authority) DO NOTHING");
+//        users.createUser(user);
+//        users.createUser(admin);
+//        return users;
+//    }
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
