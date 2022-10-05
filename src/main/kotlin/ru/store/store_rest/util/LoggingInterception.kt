@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse
 class LoggingInterception: HandlerInterceptor {
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
-        if (request.method == HttpMethod.GET.name) {
+        if (request.method == HttpMethod.GET.name && handler is HandlerMethod && !request.requestURI.contains("/error")) {
             val handlerMethod = handler as HandlerMethod
             val log = Logging(
                 "store_rest",

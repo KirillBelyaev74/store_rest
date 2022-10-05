@@ -1,18 +1,10 @@
 package ru.store.store_rest.service
 
-import ru.store.store_rest.model.UserDto
+import ru.store.store_rest.config.UserDto
 
 interface IUserService {
 
-    fun saveUser(user: UserDto): Boolean
+    fun saveUser(user: UserDto): String?
 
-    fun getUserByLogin(login: String): UserDto
-
-    fun getUserById(id: Long): UserDto
-
-    fun getUser(user: UserDto): UserDto
-
-    fun getAllUsers(): List<UserDto>
-
-    fun delete(id: Long): Boolean
+    fun delete(login: String): String
 }
