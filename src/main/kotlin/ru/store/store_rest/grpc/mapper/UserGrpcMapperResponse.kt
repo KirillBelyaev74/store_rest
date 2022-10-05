@@ -1,7 +1,7 @@
 package ru.store.store_rest.grpc.mapper
 
-import ru.store.store_rest.config.RoleDto
-import ru.store.store_rest.config.UserDto
+import ru.store.store_rest.model.RoleDto
+import ru.store.store_rest.model.UserDto
 import ru.store.store_user.UserOuterClass
 
 object UserGrpcMapperResponse {

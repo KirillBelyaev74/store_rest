@@ -1,13 +1,11 @@
 package ru.store.store_rest.grpc.repository
 
-import net.devh.boot.grpc.client.inject.GrpcClient
 import org.springframework.stereotype.Repository
 import ru.store.store_rest.config.UserConfig
-import ru.store.store_rest.config.UserDto
+import ru.store.store_rest.model.UserDto
 import ru.store.store_rest.grpc.mapper.UserGrpcMapperRequest
 import ru.store.store_rest.grpc.mapper.UserGrpcMapperResponse
 import ru.store.store_user.UserOuterClass.Status
-import ru.store.store_user.UserServiceGrpc
 
 @Repository
 open class UserRepositoryGrpc {

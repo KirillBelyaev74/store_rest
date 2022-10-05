@@ -3,7 +3,7 @@ package ru.store.store_rest.service
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
-import ru.store.store_rest.config.UserDto
+import ru.store.store_rest.model.UserDto
 import ru.store.store_rest.grpc.repository.UserRepositoryGrpc
 
 @Service

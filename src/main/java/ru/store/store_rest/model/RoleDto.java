@@ -1,4 +1,4 @@
-package ru.store.store_rest.config;
+package ru.store.store_rest.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

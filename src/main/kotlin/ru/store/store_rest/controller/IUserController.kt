@@ -1,7 +1,7 @@
 package ru.store.store_rest.controller
 
 import org.springframework.web.bind.annotation.*
-import ru.store.store_rest.config.UserDto
+import ru.store.store_rest.model.UserDto
 
 @RequestMapping("/user")
 interface IUserController {

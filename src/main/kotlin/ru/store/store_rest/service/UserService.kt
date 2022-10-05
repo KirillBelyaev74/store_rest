@@ -1,7 +1,7 @@
 package ru.store.store_rest.service
 
 import org.springframework.stereotype.Service
-import ru.store.store_rest.config.UserDto
+import ru.store.store_rest.model.UserDto
 
 @Service
 class UserService(private val service: UserDetailsServiceImpl): IUserService {
