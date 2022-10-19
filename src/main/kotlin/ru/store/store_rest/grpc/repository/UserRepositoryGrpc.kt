@@ -2,9 +2,9 @@ package ru.store.store_rest.grpc.repository
 
 import org.springframework.stereotype.Repository
 import ru.store.store_rest.config.UserConfig
-import ru.store.store_rest.model.UserDto
 import ru.store.store_rest.grpc.mapper.UserGrpcMapperRequest
 import ru.store.store_rest.grpc.mapper.UserGrpcMapperResponse
+import ru.store.store_rest.model.UserDto
 import ru.store.store_user.UserOuterClass.Status
 
 @Repository
