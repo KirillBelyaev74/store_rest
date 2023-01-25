@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import javax.sql.DataSource
 
 @EnableWebSecurity
-open class SecurityConfig(private val dataSource: DataSource): WebSecurityConfigurerAdapter() {
+class SecurityConfig(private val dataSource: DataSource): WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
@@ -60,7 +60,7 @@ open class SecurityConfig(private val dataSource: DataSource): WebSecurityConfig
 //    }
 
     @Bean
-    open fun passwordEncoder(): PasswordEncoder {
+    fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
     }
 }

@@ -1,5 +1,6 @@
 package ru.store.store_rest.util
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.core.MethodParameter
 import org.springframework.http.MediaType
@@ -29,11 +30,11 @@ class ResponseBodyAdviceLogging<R>(private val eventPublisher: ApplicationEventP
     ): R? {
         if (!methodParameter.method.name.contains("xception")) {
             val log = Logging(
-                "store_rest",
-                converterType.simpleName,
-                methodParameter.method.name,
-                RequestResponse.RESPONSE,
-                body.toString()
+                projectName = "store_rest",
+                url = request.uri.path,
+                methodName = request.method.name,
+                typeMessage = RequestResponse.RESPONSE,
+                requestResponse = if (body != null && body is List<*> ) "size ${body.size}" else body.toString()
             )
             eventPublisher.publishEvent(LoggingEvent(this, log))
         }

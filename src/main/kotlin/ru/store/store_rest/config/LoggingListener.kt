@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 import ru.store.store_rest.model.LoggingEvent
 
 @Component
-class LoggingListener {
+open class LoggingListener {
 
     @Async
     @EventListener

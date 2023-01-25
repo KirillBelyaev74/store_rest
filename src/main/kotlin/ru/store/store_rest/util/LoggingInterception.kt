@@ -1,5 +1,6 @@
 package ru.store.store_rest.util
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Component
@@ -16,14 +17,12 @@ class LoggingInterception(private val eventPublisher: ApplicationEventPublisher)
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         if (request.method == HttpMethod.GET.name && handler is HandlerMethod && !request.requestURI.contains("/error")) {
-
             val log = Logging(
-                "store_rest",
-                handler.beanType.simpleName,
-                handler.method.name,
-                RequestResponse.REQUEST,
-                "[${request.requestURI} : ${request.method}]")
-
+                projectName = "store_rest",
+                url = request.requestURI,
+                methodName = request.method,
+                typeMessage = RequestResponse.REQUEST
+            )
             eventPublisher.publishEvent(LoggingEvent(this, log))
         }
         return true

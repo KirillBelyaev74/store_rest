@@ -1,5 +1,6 @@
 package ru.store.store_rest.util
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.core.MethodParameter
 import org.springframework.http.HttpInputMessage
@@ -10,9 +11,13 @@ import ru.store.store_rest.model.Logging
 import ru.store.store_rest.model.LoggingEvent
 import ru.store.store_rest.model.RequestResponse
 import java.lang.reflect.Type
+import javax.servlet.http.HttpServletRequest
 
 @RestControllerAdvice
-class RequestBodyAdviceLogging(private val eventPublisher: ApplicationEventPublisher): RequestBodyAdviceAdapter() {
+class RequestBodyAdviceLogging(
+    private val eventPublisher: ApplicationEventPublisher,
+    private val request: HttpServletRequest
+    ): RequestBodyAdviceAdapter() {
 
     override fun supports(methodParameter: MethodParameter, targetType: Type, converterType: Class<out HttpMessageConverter<*>>): Boolean {
         return true
@@ -26,11 +31,11 @@ class RequestBodyAdviceLogging(private val eventPublisher: ApplicationEventPubli
         converterType: Class<out HttpMessageConverter<*>>
     ): Any {
         val log = Logging(
-            "store_rest",
-            converterType.simpleName,
-            methodParameter.method.name,
-            RequestResponse.REQUEST,
-            body.toString()
+            projectName = "store_rest",
+            url = request.requestURI,
+            methodName = methodParameter.method.name,
+            typeMessage = RequestResponse.REQUEST,
+            requestResponse = body.toString()
         )
         eventPublisher.publishEvent(LoggingEvent(this, log))
         return body

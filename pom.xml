@@ -12,7 +12,7 @@
 
 	<groupId>ru.store</groupId>
 	<artifactId>store_rest</artifactId>
-	<version>0.1</version>
+	<version>0.0.1</version>
 	<name>store_rest</name>
 
 	<properties>
@@ -93,6 +93,12 @@
 			<version>1.6.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-maven-allopen</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -105,10 +111,30 @@
 			</plugin>
 
 			<plugin>
+
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<version>${kotlin.version}</version>
+
+				<configuration>
+					<compilerPlugins>
+						<plugin>all-open</plugin>
+					</compilerPlugins>
+					<pluginOptions>
+						<option>all-open:class=ru.store.store_rest.config.LoggingListener</option>
+						<option>all-open:annotation=org.springframework.context.annotation.Configuration</option>
+					</pluginOptions>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-allopen</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+				</dependencies>
+
 				<executions>
+
 					<execution>
 						<id>compile</id>
 						<goals>
@@ -124,6 +150,7 @@
 							</sourceDirs>
 						</configuration>
 					</execution>
+
 					<execution>
 						<id>test-compile</id>
 						<goals> <goal>test-compile</goal> </goals>
@@ -134,6 +161,7 @@
 							</sourceDirs>
 						</configuration>
 					</execution>
+
 				</executions>
 			</plugin>
 
