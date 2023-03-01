@@ -1,6 +1,6 @@
 package ru.store.store_rest.util
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Component
@@ -15,10 +15,13 @@ import javax.servlet.http.HttpServletResponse
 @Component
 class LoggingInterception(private val eventPublisher: ApplicationEventPublisher): HandlerInterceptor {
 
+    @Value("\${spring.kafka.topic.name}")
+    private lateinit var projectName: String
+
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         if (request.method == HttpMethod.GET.name && handler is HandlerMethod && !request.requestURI.contains("/error")) {
             val log = Logging(
-                projectName = "store_rest",
+                projectName = projectName,
                 url = request.requestURI,
                 methodName = request.method,
                 typeMessage = RequestResponse.REQUEST

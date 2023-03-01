@@ -1,6 +1,6 @@
 package ru.store.store_rest.util
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.core.MethodParameter
 import org.springframework.http.MediaType
@@ -16,6 +16,9 @@ import ru.store.store_rest.model.RequestResponse
 @RestControllerAdvice
 class ResponseBodyAdviceLogging<R>(private val eventPublisher: ApplicationEventPublisher): ResponseBodyAdvice<R> {
 
+    @Value("\${spring.kafka.topic.name}")
+    private lateinit var projectName: String
+
     override fun supports(returnType: MethodParameter, converterType: Class<out HttpMessageConverter<*>>): Boolean {
         return true
     }
@@ -30,11 +33,11 @@ class ResponseBodyAdviceLogging<R>(private val eventPublisher: ApplicationEventP
     ): R? {
         if (!methodParameter.method.name.contains("xception")) {
             val log = Logging(
-                projectName = "store_rest",
+                projectName = projectName,
                 url = request.uri.path,
                 methodName = request.method.name,
                 typeMessage = RequestResponse.RESPONSE,
-                requestResponse = if (body != null && body is List<*> ) "size ${body.size}" else body.toString()
+                requestResponse = if (body != null && body is List<*>) "size ${body.size}" else body.toString()
             )
             eventPublisher.publishEvent(LoggingEvent(this, log))
         }

@@ -2,6 +2,8 @@ package ru.store.store_rest.grpc.mapper
 
 import com.google.protobuf.Int64Value
 import com.google.protobuf.StringValue
+import ru.store.store_rest.High
+import ru.store.store_rest.Low
 import ru.store.store_rest.model.ThingDto
 import ru.store.store_thing.ThingOuterClass.*
 
@@ -19,13 +21,14 @@ object ThingGrpcMapperRequest {
     }
 
     fun requestMapper(name: String?, value: String?): Request {
+        throw IllegalArgumentException("Галя, отмена")
         return Request.newBuilder().apply {
             name?.let { this.name = StringValue.of(it) }
             value?.let { this.value = StringValue.of(it) }
         }.build()
     }
 
-    fun requestByMiddlePriceMapper(low: Long, high: Long): RequestByMiddlePrice {
+    fun requestByMiddlePriceMapper(low: Low, high: High): RequestByMiddlePrice {
         return RequestByMiddlePrice.newBuilder()
             .setLow(low)
             .setHigh(high)

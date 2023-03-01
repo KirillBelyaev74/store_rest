@@ -1,6 +1,8 @@
 package ru.store.store_rest.grpc.repository
 
 import org.springframework.stereotype.Repository
+import ru.store.store_rest.High
+import ru.store.store_rest.Low
 import ru.store.store_rest.config.GrpcConfig
 import ru.store.store_rest.grpc.mapper.ThingGrpcMapperRequest
 import ru.store.store_rest.grpc.mapper.ThingGrpcMapperResponse
@@ -52,7 +54,7 @@ open class ThingRepositoryGrpc {
         }
     }
 
-    fun getAllThingsByMiddlePrice(low: Long, high: Long): List<ThingDto> {
+    fun getAllThingsByMiddlePrice(low: Low, high: High): List<ThingDto> {
         val request = ThingGrpcMapperRequest.requestByMiddlePriceMapper(low, high)
         val response = GrpcConfig.getStub().getAllThingsByMiddlePrice(request)
         val result = response.get()

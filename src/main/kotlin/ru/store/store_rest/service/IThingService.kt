@@ -1,5 +1,7 @@
 package ru.store.store_rest.service
 
+import ru.store.store_rest.High
+import ru.store.store_rest.Low
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
 
@@ -21,7 +23,7 @@ interface IThingService {
 
     fun findAllThingsBySize(size: String): List<ThingDto>
 
-    fun findAllThingsByMiddlePrice(low: Long, high: Long): List<ThingDto>
+    fun findAllThingsByMiddlePrice(low: Low, high: High): List<ThingDto>
 
     fun deleteById(id: Long): Boolean
 }

@@ -1,6 +1,6 @@
 package ru.store.store_rest.util
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.core.MethodParameter
 import org.springframework.http.HttpInputMessage
@@ -19,6 +19,9 @@ class RequestBodyAdviceLogging(
     private val request: HttpServletRequest
     ): RequestBodyAdviceAdapter() {
 
+    @Value("\${spring.kafka.topic.name}")
+    private lateinit var projectName: String
+
     override fun supports(methodParameter: MethodParameter, targetType: Type, converterType: Class<out HttpMessageConverter<*>>): Boolean {
         return true
     }
@@ -31,7 +34,7 @@ class RequestBodyAdviceLogging(
         converterType: Class<out HttpMessageConverter<*>>
     ): Any {
         val log = Logging(
-            projectName = "store_rest",
+            projectName = projectName,
             url = request.requestURI,
             methodName = methodParameter.method.name,
             typeMessage = RequestResponse.REQUEST,

@@ -10,8 +10,7 @@ object UserGrpcMapperResponse {
         return UserDto(
             user.login.value,
             user.password.value,
-            user.rolesList.map { RoleDto(it.value) }
-                .toSet()
+            user.rolesList.map { RoleDto(it.value) }.toSet()
         )
     }
 }
