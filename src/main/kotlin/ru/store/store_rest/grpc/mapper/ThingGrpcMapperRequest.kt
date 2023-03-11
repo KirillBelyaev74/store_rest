@@ -21,7 +21,6 @@ object ThingGrpcMapperRequest {
     }
 
     fun requestMapper(name: String?, value: String?): Request {
-        throw IllegalArgumentException("Галя, отмена")
         return Request.newBuilder().apply {
             name?.let { this.name = StringValue.of(it) }
             value?.let { this.value = StringValue.of(it) }
