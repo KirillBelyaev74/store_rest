@@ -5,9 +5,10 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import ru.logging.annotation.Log
 import ru.store.store_rest.High
 import ru.store.store_rest.Low
-import ru.store.store_rest.annotation.Log
+import ru.store.store_rest.checkResponseBD
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
 import ru.store.store_rest.service.IThingService
@@ -17,10 +18,7 @@ open class ThingController(private val service: IThingService): IThingController
 
     @Log
     override fun saveThing(@RequestBody thing: ThingDto): ResponseEntity<Boolean> {
-        return when (val result = service.save(thing)) {
-            true -> ResponseEntity(result, HttpStatus.OK)
-            else -> ResponseEntity(result, HttpStatus.NOT_EXTENDED)
-        }
+        return service.save(thing).checkResponseBD()
     }
 
     @Log
@@ -65,9 +63,6 @@ open class ThingController(private val service: IThingService): IThingController
 
     @Log
     override fun deleteById(@PathVariable id: Long): ResponseEntity<Boolean> {
-        return when (val result = service.deleteById(id)) {
-            true -> ResponseEntity(result, HttpStatus.OK)
-            else -> ResponseEntity(result, HttpStatus.NOT_EXTENDED)
-        }
+        return service.deleteById(id).checkResponseBD()
     }
 }

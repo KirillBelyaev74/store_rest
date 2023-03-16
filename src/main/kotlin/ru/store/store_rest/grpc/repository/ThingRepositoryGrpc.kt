@@ -1,6 +1,7 @@
 package ru.store.store_rest.grpc.repository
 
 import org.springframework.stereotype.Repository
+import ru.logging.annotation.Log
 import ru.store.store_rest.High
 import ru.store.store_rest.Low
 import ru.store.store_rest.config.GrpcConfig
@@ -24,6 +25,7 @@ open class ThingRepositoryGrpc {
         }
     }
 
+    @Log
     fun getAllThings(): List<ThingDto> {
         val request = ThingGrpcMapperRequest.requestMapper(null, null)
         val response = GrpcConfig.getStub().getAllThings(request)

@@ -1,7 +1,7 @@
 package ru.store.store_rest.service
 
 import org.springframework.stereotype.Service
-import ru.store.store_rest.annotation.Log
+import ru.logging.annotation.Log
 import ru.store.store_rest.model.UserDto
 
 @Service

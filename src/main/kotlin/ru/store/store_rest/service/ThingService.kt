@@ -3,9 +3,9 @@ package ru.store.store_rest.service
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
+import ru.logging.annotation.Log
 import ru.store.store_rest.High
 import ru.store.store_rest.Low
-import ru.store.store_rest.annotation.Log
 import ru.store.store_rest.grpc.repository.ThingRepositoryGrpc
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
