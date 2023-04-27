@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import ru.logging.util.LoggingInterception
 
 @Component
-class WebConfig(private val interception: LoggingInterception): WebMvcConfigurer {
+class WebConfig(private val interception: LoggingInterception) : WebMvcConfigurer {
 
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(interception)

@@ -11,7 +11,7 @@ import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
 
 @Service
-open class ThingService(private val repository: ThingRepositoryGrpc): IThingService {
+open class ThingService(private val repository: ThingRepositoryGrpc) : IThingService {
 
     @Log
     @CacheEvict(allEntries = true, condition = "#result != null")
@@ -20,7 +20,8 @@ open class ThingService(private val repository: ThingRepositoryGrpc): IThingServ
             thing.brand.isNullOrBlank() ||
             thing.size.isNullOrBlank() ||
             thing.price.toString().isBlank() ||
-            thing.description.isNullOrBlank()) {
+            thing.description.isNullOrBlank()
+        ) {
             throw IllegalArgumentException("Parameters is null or is blank: $thing")
         }
         return repository.save(thing)
@@ -51,19 +52,34 @@ open class ThingService(private val repository: ThingRepositoryGrpc): IThingServ
     }
 
     @Log
-    @Cacheable(cacheNames = ["findAllThingsByCategory"], value = ["findAllThingsByCategory"], unless = "#result.size >= 20", key = "#category")
+    @Cacheable(
+        cacheNames = ["findAllThingsByCategory"],
+        value = ["findAllThingsByCategory"],
+        unless = "#result.size >= 20",
+        key = "#category"
+    )
     override fun findAllThingsByCategory(category: String): List<ThingDto> {
         return repository.getAllThingsByBrandCategorySize("category", category)
     }
 
     @Log
-    @Cacheable(cacheNames = ["findAllThingsByBrand"], value = ["findAllThingsByBrand"], unless = "#result.size >= 20", key = "#brand")
+    @Cacheable(
+        cacheNames = ["findAllThingsByBrand"],
+        value = ["findAllThingsByBrand"],
+        unless = "#result.size >= 20",
+        key = "#brand"
+    )
     override fun findAllThingsByBrand(brand: String): List<ThingDto> {
         return repository.getAllThingsByBrandCategorySize("brand", brand)
     }
 
     @Log
-    @Cacheable(cacheNames = ["findAllThingsBySize"], value = ["findAllThingsBySize"], unless = "#result.size >= 20", key = "#size")
+    @Cacheable(
+        cacheNames = ["findAllThingsBySize"],
+        value = ["findAllThingsBySize"],
+        unless = "#result.size >= 20",
+        key = "#size"
+    )
     override fun findAllThingsBySize(size: String): List<ThingDto> {
         return repository.getAllThingsByBrandCategorySize("size", size)
     }

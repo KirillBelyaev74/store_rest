@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration
 import java.util.concurrent.TimeUnit
 
 @Configuration
-class CacheConfig {
+open class CacheConfig {
 
     @Bean
-    fun cacheManager(): CacheManager {
+    open fun cacheManager(): CacheManager {
         return object : ConcurrentMapCacheManager() {
             override fun createConcurrentMapCache(name: String): Cache {
                 return ConcurrentMapCache(
@@ -23,7 +23,8 @@ class CacheConfig {
                         .concurrencyLevel(1)
                         .maximumSize(100)
                         .expireAfterWrite(1, TimeUnit.HOURS)
-                        .build<Any, Any>().asMap(), false)
+                        .build<Any, Any>().asMap(), false
+                )
             }
         }
     }

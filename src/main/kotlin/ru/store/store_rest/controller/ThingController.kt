@@ -1,6 +1,5 @@
 package ru.store.store_rest.controller
 
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
@@ -14,7 +13,7 @@ import ru.store.store_rest.model.ThingDto
 import ru.store.store_rest.service.IThingService
 
 @RestController
-open class ThingController(private val service: IThingService): IThingController {
+open class ThingController(private val service: IThingService) : IThingController {
 
     @Log
     override fun saveThing(@RequestBody thing: ThingDto): ResponseEntity<Boolean> {

@@ -2,11 +2,12 @@ package ru.store.store_rest.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.logging.model.ObjectToStringForLog;
 
 import java.util.Collection;
 import java.util.Set;
 
-public class UserDto implements UserDetails {
+public class UserDto extends ObjectToStringForLog implements UserDetails {
 
     private String username;
     private String password;
@@ -30,6 +31,10 @@ public class UserDto implements UserDetails {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -48,10 +53,6 @@ public class UserDto implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     @Override

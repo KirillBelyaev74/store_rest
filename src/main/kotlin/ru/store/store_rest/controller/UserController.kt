@@ -8,7 +8,7 @@ import ru.store.store_rest.model.UserDto
 import ru.store.store_rest.service.IUserService
 
 @RestController
-open class UserController(private val service: IUserService): IUserController {
+open class UserController(private val service: IUserService) : IUserController {
 
     @Log
     override fun saveUser(@RequestBody user: UserDto): String? {

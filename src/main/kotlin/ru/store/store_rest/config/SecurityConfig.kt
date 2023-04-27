@@ -11,14 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import javax.sql.DataSource
 
 @EnableWebSecurity
-class SecurityConfig(private val dataSource: DataSource): WebSecurityConfigurerAdapter() {
+open class SecurityConfig(private val dataSource: DataSource) : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-            .mvcMatchers(HttpMethod.GET, "/thing/").permitAll()
-            .mvcMatchers(HttpMethod.GET, "/thing/category").permitAll()
-            .mvcMatchers(HttpMethod.GET, "/thing/brand").permitAll()
-            .mvcMatchers(HttpMethod.GET, "/thing/size").permitAll()
+            .mvcMatchers(HttpMethod.GET, "/**").permitAll()
             .mvcMatchers(HttpMethod.POST, "/thing/").hasRole("ADMIN")
             .mvcMatchers(HttpMethod.DELETE, "/thing/{id}").hasRole("ADMIN")
             .mvcMatchers("/user/**").hasAnyRole("ADMIN")
@@ -60,7 +57,7 @@ class SecurityConfig(private val dataSource: DataSource): WebSecurityConfigurerA
 //    }
 
     @Bean
-    fun passwordEncoder(): PasswordEncoder {
+    open fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
     }
 }

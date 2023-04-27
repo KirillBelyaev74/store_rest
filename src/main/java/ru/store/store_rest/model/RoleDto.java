@@ -1,8 +1,9 @@
 package ru.store.store_rest.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import ru.logging.model.ObjectToStringForLog;
 
-public class RoleDto implements GrantedAuthority {
+public class RoleDto extends ObjectToStringForLog implements GrantedAuthority {
     private String name;
 
     public RoleDto() {

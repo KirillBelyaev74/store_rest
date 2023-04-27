@@ -10,22 +10,22 @@ import org.springframework.scheduling.annotation.EnableAsync
 @SpringBootApplication
 @EnableCaching
 @EnableAsync
-class StoreRestApplication
+open class StoreRestApplication
 
 fun main(args: Array<String>) {
-	runApplication<StoreRestApplication>(*args)
+    runApplication<StoreRestApplication>(*args)
 }
 
 fun String.dropNamePackage(): String {
-	return this.drop(this.lastIndexOf(".") + 1)
+    return this.drop(this.lastIndexOf(".") + 1)
 }
 
 typealias Low = Long
 typealias High = Long
 
 fun Boolean.checkResponseBD(): ResponseEntity<Boolean> {
-	return when (this) {
-		true -> ResponseEntity(this, HttpStatus.OK)
-		else -> ResponseEntity(this, HttpStatus.NOT_EXTENDED)
-	}
+    return when (this) {
+        true -> ResponseEntity(this, HttpStatus.OK)
+        else -> ResponseEntity(this, HttpStatus.NOT_EXTENDED)
+    }
 }

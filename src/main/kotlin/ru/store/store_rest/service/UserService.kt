@@ -5,7 +5,7 @@ import ru.logging.annotation.Log
 import ru.store.store_rest.model.UserDto
 
 @Service
-open class UserService(private val service: UserDetailsServiceImpl): IUserService {
+open class UserService(private val service: UserDetailsServiceImpl) : IUserService {
 
     @Log
     override fun saveUser(user: UserDto): String? {
