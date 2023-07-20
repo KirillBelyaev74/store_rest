@@ -21,42 +21,42 @@ open class ThingController(private val service: IThingService) : IThingControlle
     }
 
     @Log
-    override fun getAllThings(): List<ThingDto> {
+    override fun getAllThings(): MutableList<ThingDto>? {
         return service.findAllThings();
     }
 
     @Log
-    override fun getAllCategory(): List<BrandCategorySizeDto> {
+    override fun getAllCategory(): MutableList<BrandCategorySizeDto>? {
         return service.findAllCategory()
     }
 
     @Log
-    override fun getAllBrand(): List<BrandCategorySizeDto> {
+    override fun getAllBrand(): MutableList<BrandCategorySizeDto>? {
         return service.findAllBrand()
     }
 
     @Log
-    override fun getAllSize(): List<BrandCategorySizeDto> {
+    override fun getAllSize(): MutableList<BrandCategorySizeDto>? {
         return service.findAllSize()
     }
 
     @Log
-    override fun getAllThingsByCategory(@PathVariable category: String): List<ThingDto> {
+    override fun getAllThingsByCategory(@PathVariable category: String): MutableList<ThingDto>? {
         return service.findAllThingsByCategory(category)
     }
 
     @Log
-    override fun getAllThingsByBrand(@PathVariable brand: String): List<ThingDto> {
+    override fun getAllThingsByBrand(@PathVariable brand: String): MutableList<ThingDto>? {
         return service.findAllThingsByBrand(brand)
     }
 
     @Log
-    override fun getAllThingsBySize(@PathVariable size: String): List<ThingDto> {
+    override fun getAllThingsBySize(@PathVariable size: String): MutableList<ThingDto>? {
         return service.findAllThingsBySize(size)
     }
 
     @Log
-    override fun getAllThingsByMiddlePrice(@PathVariable low: Low, @PathVariable high: High): List<ThingDto> {
+    override fun getAllThingsByMiddlePrice(@PathVariable low: Low, @PathVariable high: High): MutableList<ThingDto>? {
         return service.findAllThingsByMiddlePrice(low, high)
     }
 

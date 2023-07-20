@@ -11,12 +11,12 @@ import ru.store.store_rest.service.IUserService
 open class UserController(private val service: IUserService) : IUserController {
 
     @Log
-    override fun saveUser(@RequestBody user: UserDto): String? {
+    override fun saveUser(@RequestBody user: UserDto): Boolean {
         return service.saveUser(user)
     }
 
     @Log
-    override fun delete(@PathVariable login: String): String {
+    override fun delete(@PathVariable login: String): Boolean {
         return service.delete(login)
     }
 }

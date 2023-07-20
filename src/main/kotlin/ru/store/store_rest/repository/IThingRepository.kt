@@ -1,11 +1,11 @@
-package ru.store.store_rest.service
+package ru.store.store_rest.repository
 
 import ru.store.store_rest.High
 import ru.store.store_rest.Low
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
 
-interface IThingService {
+interface IThingRepository {
 
     fun save(thing: ThingDto): Boolean
 

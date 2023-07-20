@@ -7,8 +7,8 @@ import ru.store.store_rest.model.UserDto
 interface IUserController {
 
     @PostMapping("/")
-    fun saveUser(@RequestBody user: UserDto): String?
+    fun saveUser(@RequestBody user: UserDto): Boolean
 
     @DeleteMapping("/{login}")
-    fun delete(@PathVariable login: String): String
+    fun delete(@PathVariable login: String): Boolean
 }

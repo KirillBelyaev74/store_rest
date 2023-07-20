@@ -8,7 +8,7 @@ import ru.store.store_rest.model.UserDto
 open class UserService(private val service: UserDetailsServiceImpl) : IUserService {
 
     @Log
-    override fun saveUser(user: UserDto): String? {
+    override fun saveUser(user: UserDto): Boolean {
         user.run {
             if (username.isNullOrBlank() || password.isNullOrBlank() || roles.isEmpty()) {
                 throw IllegalArgumentException("Not correct parameters login: [${user.username}] or password or role: [${user.roles}]")
@@ -18,7 +18,7 @@ open class UserService(private val service: UserDetailsServiceImpl) : IUserServi
     }
 
     @Log
-    override fun delete(login: String): String {
+    override fun delete(login: String): Boolean {
         if (login.isNullOrBlank()) {
             throw IllegalArgumentException("Not correct parameters login: [$login]")
         }

@@ -1,15 +1,15 @@
-package ru.store.store_rest.config
-
-import io.grpc.ManagedChannelBuilder
-import ru.store.store_thing.ThingServiseGrpc
-
-object GrpcConfig {
-
-    fun getStub(): ThingServiseGrpc.ThingServiseFutureStub {
-        val channel = ManagedChannelBuilder
-            .forAddress("localhost", 9091)
-            .usePlaintext()
-            .build()
-        return ThingServiseGrpc.newFutureStub(channel)
-    }
-}
+//package ru.store.store_rest.config
+//
+//import io.grpc.ManagedChannelBuilder
+//import ru.store.store_thing.ThingServiseGrpc
+//
+//object GrpcConfig {
+//
+//    fun getStub(): ThingServiseGrpc.ThingServiseFutureStub {
+//        val channel = ManagedChannelBuilder
+//            .forAddress("localhost", 9091)
+//            .usePlaintext()
+//            .build()
+//        return ThingServiseGrpc.newFutureStub(channel)
+//    }
+//}
