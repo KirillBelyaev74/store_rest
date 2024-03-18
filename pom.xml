@@ -12,12 +12,12 @@
 
     <groupId>ru.store</groupId>
     <artifactId>store_rest</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.1</version>
     <name>store_rest</name>
 
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.6.10</kotlin.version>
+        <kotlin.version>1.8.10</kotlin.version>
         <gdbc.version>1.43.0</gdbc.version>
     </properties>
 
