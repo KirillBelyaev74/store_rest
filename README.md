@@ -6,6 +6,7 @@
 
 ```
     - Kotlin
+    - Postgres
     - Spring
     - GRPC
     - Docker
