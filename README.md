@@ -3,6 +3,15 @@
 - [store_user](https://github.com/KirillBelyaev74/store_user)
 - [kafka_to_database](https://github.com/KirillBelyaev74/kafka_to_database)
 - [logging_to_kafka](https://github.com/KirillBelyaev74/logging_to_kafka)
+
+```
+    - Kotlin
+    - Spring
+    - GRPC
+    - Docker
+    - Kafka
+```
+
 ```mermaid
 flowchart TB
     0(front)
