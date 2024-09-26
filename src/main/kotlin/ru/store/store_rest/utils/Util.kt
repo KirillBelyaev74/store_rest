@@ -1,4 +1,4 @@
-package ru.store.store_rest
+package ru.store.store_rest.utils
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

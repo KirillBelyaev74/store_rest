@@ -1,4 +1,4 @@
-package ru.store.store_rest
+package ru.store.store_rest.utils
 
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.util.UriBuilder

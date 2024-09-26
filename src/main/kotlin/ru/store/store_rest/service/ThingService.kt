@@ -4,11 +4,11 @@ import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import ru.logging.annotation.Log
-import ru.store.store_rest.High
-import ru.store.store_rest.Low
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
 import ru.store.store_rest.repository.IThingRepository
+import ru.store.store_rest.utils.High
+import ru.store.store_rest.utils.Low
 
 @Service
 open class ThingService(private val repository: IThingRepository) : IThingService {

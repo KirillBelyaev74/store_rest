@@ -33,3 +33,26 @@ flowchart TB
     3 -->|kafka| 4
     4 --> C
 ```
+```
+Docker 
+    - docker compose up
+    - docker build --no-cache -t kirbel74/thing:latest .
+    - docker push kirbel74/thing:latest
+    - docker rm $(docker ps -a -q -f status=exited)
+
+    - https://habr.com/ru/companies/flant/articles/336654/ 
+    - https://habr.com/ru/companies/timeweb/articles/595687/ 
+```
+```
+Kubernetes
+    - kubectl config get-contexts
+    - kubectl cluster-info
+    - kubectl config use-context <NAME>
+    
+    - minikube service <service name> --url
+    - minikube tunnel
+    
+    - kubectl get all
+    
+    - cat /etc/hosts
+```

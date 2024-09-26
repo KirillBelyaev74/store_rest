@@ -1,9 +1,9 @@
 package ru.store.store_rest.service
 
-import ru.store.store_rest.High
-import ru.store.store_rest.Low
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
+import ru.store.store_rest.utils.High
+import ru.store.store_rest.utils.Low
 
 interface IThingService {
 

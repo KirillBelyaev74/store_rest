@@ -1,18 +1,11 @@
 package ru.store.store_rest.repository
 
-import org.springframework.boot.web.client.RestTemplateBuilder
-import org.springframework.core.ParameterizedTypeReference
-import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Repository
-import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.exchange
-import org.springframework.web.client.getForEntity
 import org.springframework.web.reactive.function.client.WebClient
-import org.springframework.web.util.UriTemplateHandler
-import ru.store.store_rest.*
 import ru.store.store_rest.config.EndpointsConfig
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
+import ru.store.store_rest.utils.*
 
 @Repository
 open class ThingRepository(private val webClient: WebClient, private val endpoints: EndpointsConfig) :

@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import ru.logging.annotation.Log
-import ru.store.store_rest.High
-import ru.store.store_rest.Low
-import ru.store.store_rest.checkResponseBD
 import ru.store.store_rest.model.BrandCategorySizeDto
 import ru.store.store_rest.model.ThingDto
 import ru.store.store_rest.service.IThingService
+import ru.store.store_rest.utils.High
+import ru.store.store_rest.utils.Low
+import ru.store.store_rest.utils.checkResponseBD
 
 @RestController
 open class ThingController(private val service: IThingService) : IThingController {
