@@ -3,6 +3,7 @@
 - [store_user](https://github.com/KirillBelyaev74/store_user)
 - [kafka_to_database](https://github.com/KirillBelyaev74/kafka_to_database)
 - [logging_to_kafka](https://github.com/KirillBelyaev74/logging_to_kafka)
+- [store_devOps](https://github.com/KirillBelyaev74/store_devOps)
 
 ```
     - Kotlin
@@ -11,6 +12,7 @@
     - GRPC
     - Docker
     - Kafka
+    - Kubernetes
 ```
 
 ```mermaid
@@ -35,7 +37,6 @@ flowchart TB
 ```
 ```
 Docker 
-    - docker compose up
     - docker build --no-cache -t kirbel74/thing:latest .
     - docker push kirbel74/thing:latest
     - docker rm $(docker ps -a -q -f status=exited)
@@ -51,8 +52,6 @@ Kubernetes
     
     - minikube service <service name> --url
     - minikube tunnel
-    
-    - kubectl get all
     
     - cat /etc/hosts
 ```
